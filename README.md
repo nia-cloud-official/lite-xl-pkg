@@ -61,13 +61,7 @@ Download the zip file here : [https://github.com/nia-cloud-official/lite-xl-pkg/
 ```bash
 git clone https://github.com/yourname/lite-xl-pkg
 ```
-
-2. Run tests:
-```bash
-make test  # Requires busted
-```
-
-3. Submit PR:
+2. Submit PR:
 ```bash
 # Create feature branch
 git checkout -b feat/awesome-feature
