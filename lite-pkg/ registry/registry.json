@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    {
+      "name": "align_carets",
+      "description": "Align multiple carets and selections",
+      "repo": "https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/align_carets.lua?raw=1"
+    },
+    {
+      "name": "autoinsert",
+      "description": "Automatically inserts closing brackets and quotes. Also allows selected text to be wrapped with brackets or quotes.",
+      "repo": "https://github.com/lite-xl/lite-xl-plugins/blob/master/plugins/autoinsert.lua?raw=1"
+    }
+  ]
+}

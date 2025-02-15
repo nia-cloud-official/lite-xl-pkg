@@ -1,0 +1,37 @@
+name: Deploy Plugin
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Verify Lua syntax
+        uses: leafo/lua-action@v1
+        with:
+          entry: init.lua
+          
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          body_path: CHANGELOG.md
+          
+      - name: Update Registry
+        run: |
+          git clone https://github.com/nia-cloud-official/lite-xl-registry
+          cd lite-xl-registry
+          jq '.plugins += [{
+            "name": "${{ env.PLUGIN_NAME }}",
+            "version": "${{ github.ref_name }}",
+            "repo": "https://github.com/${{ github.repository }}"
+          }]' registry.json > tmp.json
+          mv tmp.json registry.json
+          git commit -am "Add ${{ env.PLUGIN_NAME }} v${{ github.ref_name }}"
+          git push
