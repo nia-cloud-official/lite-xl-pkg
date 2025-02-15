@@ -42,7 +42,7 @@ local lite_pkg = {
 
 -- Configuration
 config.plugins.lite_pkg = {
-    registry = "https://raw.githubusercontent.com/lite-xl/plugins/main/registry.json",
+    registry = "https://raw.githubusercontent.com/nia-cloud-official/lite-xl-registry/main/registry.json",
     install_dir = EXEDIR .. "/data/plugins",
     git = "git",
     timeout = 15
